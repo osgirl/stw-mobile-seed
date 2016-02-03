@@ -1,0 +1,330 @@
+<ion-view title="{{vm.navTitle}}"
+          ng-controller="FormController as vm">
+	<ion-content class="overflow-scroll has-header">
+		<form name="userForm"
+		      id="jobDetailsForm"
+		      novalidate>
+			<label class="item item-input item-stacked-label"
+			       for="sapNumberId">
+				<span class="input-label">Sap Number:</span>
+				<input type="text"
+				       name="sapNumber"
+				       id="sapNumberId"
+				       pattern="\d{8}"
+				       placeholder="SAP Number should be 8 digits"
+				       required>
+			</label>
+			<label class="item item-input item-stacked-label"
+			       for="nameId">
+				<span class="input-label">Name</span>
+				<input type="text"
+				       name="name"
+				       id="nameId"
+				       placeholder="Name"
+				       required>
+			</label>
+			<label class="item item-input item-stacked-label"
+			       for="telNumberId">
+				<span class="input-label">Tel Number:</span>
+				<input type="text"
+				       name="telNumber"
+				       id="telNumberId"
+				       placeholder="Telephone Number"
+				       pattern="\d{11}"
+				       required>
+			</label>
+			<label class="item item-input item-stacked-label"
+			       for="addressId">
+				<span class="input-label">Address:</span>
+				<input type="text"
+				       name="address"
+				       id="addressId"
+				       placeholder="Address"
+				       required>
+			</label>
+			<label class="item item-input item-stacked-label"
+			       for="postcodeId">
+				<span class="input-label">Postcode:</span>
+				<input type="text"
+				       name="postcode"
+				       id="postcodeId"
+				       placeholder="Postcode"
+				       required>
+			</label>
+			<label class="item item-input item-stacked-label"
+			       for="custDetailsId">
+				<span class="input-label">Customer Details:</span>
+				<input type="text"
+				       name="custDetails"
+				       id="custDetailsId"
+				       placeholder="Customer Details"
+				       required>
+			</label>
+
+			<div class="item item-divider">
+				Grid Reference
+			</div>
+			<div class="item item-button-right"
+			     id="locateMe">
+				Locate Me
+				<button class="button button-positive">
+					<i class="icon ion-ios-location"></i>
+				</button>
+				<span id="geoStatus"
+				      hidden><span class="largeIcon"><i class="fa fa-spinner fa-spin orange"></i></span><span class="info">&nbsp;Searching...</span></span>
+				<span id="geoError"
+				      hidden><span class="error largeIcon"><i class="fa fa-exclamation-triangle"></i></span><span class="info">&nbsp;Ensure "Location" is enabled</span></span>
+			</div>
+			<label class="item item-input item-stacked-label"
+			       for="gridXId">
+				<span class="input-label">X Coords</span>
+				<input type="text"
+				       name="gridX"
+				       id="gridXId"
+				       placeholder="X axis coordinate"
+				       pattern="\d{6}"
+				       title="Coordinates should be 6 digits"
+				       required>
+			</label>
+			<label class="item item-input item-stacked-label"
+			       for="gridYId">
+				<span class="input-label">Y Coords</span>
+				<input type="text"
+				       name="gridY"
+				       id="gridYId"
+				       placeholder="Y axis coordinate"
+				       pattern="\d{6}"
+				       title="Coordinates should be 6 digits"
+				       required>
+			</label>
+			<label index="-1"
+			       class="input-group-addon"
+			       data-toggle="popover"
+			       data-content="The x,y coordinates using the format "
+			       nnnnnn"">
+			<span class="fa fa-info"></span>
+			</label>
+			<label class="item item-input item-stacked-label"
+			       for="workReqId">
+				<span class="input-label">Work Required</span>
+				<input type="text"
+				       name="workReq"
+				       id="workReqId"
+				       placeholder="Begin typing to find Work Required By Gang options"
+				       required>
+			</label>
+			<label class="item item-input item-select"
+			       for="materialId">
+				<div class="input-label">
+					Pipe Material
+				</div>
+				<select name="material"
+				        id="materialId">
+					<option value="">Please select material</option>
+					<option value="ductile">Ductile</option>
+					<option value="pvc">PVC</option>
+					<option value="ac">AC</option>
+					<option value="steel">Steel</option>
+					<option value="castIron">Cast Iron</option>
+					<option value="mdpe">MDPE</option>
+					<option value="hppe">HPPE</option>
+					<option value="blackPoly">Black Poly</option>
+					<option value="copper">Copper</option>
+					<option value="lead">Lead</option>
+					<option value="galv">Galv</option>
+				</select>
+			</label>
+			<label class="item item-input item-stacked-label"
+			       for="sizeId">
+				<span class="input-label">Pipe Size</span>
+				<input type="number"
+				       name="size"
+				       id="sizeId"
+				       min="0"
+				       placeholder="Size of pipe"
+				       required>
+			</label>
+			<label class="item item-input item-select"
+			       for="materialId">
+				<span class="input-label">Pipe Unit</span>
+				<select name="sizeUOM"
+				        id="sizeUOMId">
+					<option value="">Please select unit</option>
+					<option value="inches">Inches</option>
+					<option value="millimetres">Millimetres</option>
+				</select>
+			</label>
+
+			<div class="item item-divider">
+				Method of Work
+			</div>
+			<div class="validationError hidden"
+			     id="methodOfWorkError"
+			     hidden>Please select at least one method of work
+			</div>
+			<div id="methodOfWorkId">
+				<label class="item item-checkbox ng-valid"
+				       for="openCutId">
+					<div class="checkbox checkbox-input-hidden disable-pointer-events checkbox-circle">
+						<input type="checkbox"
+						       checked=""
+						       id="openCutId"
+						       name="opencut"
+						       value="opencut"
+						       class="ng-pristine ng-untouched ng-valid"><i class="checkbox-icon"></i>
+					</div>
+					<div class="item-content disable-pointer-events"><span class="ng-binding">Open Cut</span></div>
+				</label>
+				<label class="item item-checkbox ng-valid"
+				       for="moleingId">
+					<div class="checkbox checkbox-input-hidden disable-pointer-events">
+						<input type="checkbox"
+						       name="moleing"
+						       id="moleingId"
+						       value="moleing"
+						       class="ng-pristine ng-untouched ng-valid"><i class="checkbox-icon"></i>
+					</div>
+					<div class="item-content disable-pointer-events"><span class="ng-binding">Moleing</span></div>
+				</label>
+				<label class="item item-checkbox ng-valid"
+				       for="kobusId">
+					<div class="checkbox checkbox-input-hidden disable-pointer-events">
+						<input type="checkbox"
+						       name="kobus"
+						       id="kobusId"
+						       value="kobus"
+						       class="ng-pristine ng-untouched ng-valid"><i class="checkbox-icon"></i>
+					</div>
+					<div class="item-content disable-pointer-events"><span class="ng-binding">Kobus</span></div>
+				</label>
+				<label class="item item-checkbox ng-valid"
+				       for="noExcavationId">
+					<div class="checkbox checkbox-input-hidden disable-pointer-events">
+						<input type="checkbox"
+						       name="noExcavation"
+						       id="noExcavationId"
+						       value="noExcavation"
+						       class="ng-pristine ng-untouched ng-valid"><i class="checkbox-icon"></i>
+					</div>
+					<div class="item-content disable-pointer-events"><span class="ng-binding">No Excavation</span></div>
+				</label>
+			</div>
+			<div class="item item-divider">
+				Position
+			</div>
+			<div class="validationError hidden"
+			     id="positionError"
+			     hidden>Please select at least one position
+			</div>
+			<div id="positionId">
+				<label class="item item-checkbox ng-valid"
+				       for="carriagewayId">
+					<div class="checkbox checkbox-input-hidden disable-pointer-events checkbox-circle">
+						<input type="checkbox"
+						       checked=""
+						       name="carriageway"
+						       id="carriagewayId"
+						       value="carriageway"
+						       class="ng-pristine ng-untouched ng-valid"><i class="checkbox-icon"></i>
+					</div>
+					<div class="item-content disable-pointer-events"><span class="ng-binding">Carriageway</span></div>
+				</label>
+				<label class="item item-checkbox ng-valid"
+				       for="footwayId">
+					<div class="checkbox checkbox-input-hidden disable-pointer-events">
+						<input type="checkbox"
+						       name="footway"
+						       id="footwayId"
+						       value="carriageway"
+						       class="ng-pristine ng-untouched ng-valid"><i class="checkbox-icon"></i>
+					</div>
+					<div class="item-content disable-pointer-events"><span class="ng-binding">Footway</span></div>
+				</label>
+				<label class="item item-checkbox ng-valid"
+				       for="cycleLaneId">
+					<div class="checkbox checkbox-input-hidden disable-pointer-events">
+						<input type="checkbox"
+						       name="cycleLane"
+						       id="cycleLaneId"
+						       value="cycleLane"
+						       class="ng-pristine ng-untouched ng-valid"><i class="checkbox-icon"></i>
+					</div>
+					<div class="item-content disable-pointer-events"><span class="ng-binding">Cycle Lane</span></div>
+				</label>
+				<label class="item item-checkbox ng-valid"
+				       for="bridlewayfootpathId">
+					<div class="checkbox checkbox-input-hidden disable-pointer-events">
+						<input type="checkbox"
+						       name="bridlewayfootpath"
+						       id="bridlewayfootpathId"
+						       value="bridlewayfootpath"
+						       class="ng-pristine ng-untouched ng-valid"><i class="checkbox-icon"></i>
+					</div>
+					<div class="item-content disable-pointer-events"><span class="ng-binding">Bridleway/Footpath</span>
+					</div>
+				</label>
+				<label class="item item-checkbox ng-valid"
+				       for="pedestrianizedzoneId">
+					<div class="checkbox checkbox-input-hidden disable-pointer-events">
+						<input type="checkbox"
+						       name="pedestrianizedzone"
+						       id="pedestrianizedzoneId"
+						       value="pedestrianizedzone"
+						       class="ng-pristine ng-untouched ng-valid"><i class="checkbox-icon"></i>
+					</div>
+					<div class="item-content disable-pointer-events"><span class="ng-binding">Pedestrianized Zone</span>
+					</div>
+				</label>
+				<label class="item item-checkbox ng-valid"
+				       for="privatelandId">
+					<div class="checkbox checkbox-input-hidden disable-pointer-events">
+						<input type="checkbox"
+						       name="privateland"
+						       id="privatelandId"
+						       value="privateland"
+						       class="ng-pristine ng-untouched ng-valid"><i class="checkbox-icon"></i>
+					</div>
+					<div class="item-content disable-pointer-events"><span class="ng-binding">Private Land</span></div>
+				</label>
+			</div>
+			<label class="item item-input item-stacked-label"
+			       for="cwayId">
+				<span class="input-label">C/Way width (m):</span>
+				<input type="text"
+				       name="cway"
+				       id="cwayId"
+				       pattern="[0-2]?\d(\.\d)?"
+				       title="Enter a number less than 30, to 1 decimal place"
+				       required>
+			</label>
+			<label class="item item-input item-stacked-label"
+			       for="fwayId">
+				<span class="input-label">F/Way width (m):</span>
+				<input type="text"
+				       name="fway"
+				       id="fwayId"
+				       pattern="[0-2]?\d(\.\d)?"
+				       title="Enter a number less than 30, to 1 decimal place."
+				       required>
+			</label>
+			<label class="item item-input item-stacked-label"
+			       for="mphId">
+				<span class="input-label">MPH:</span>
+				<input type="number"
+				       name="mph"
+				       id="mphId"
+				       min="20"
+				       max="70"
+				       step="10"
+				       required>
+			</label>
+			<button type="submit"
+			        class="button button-full button-primary"
+			        id="saveButtonTop"
+			        value="Save"
+			        ng-disabled="userForm.$invalid">
+				Save
+			</button>
+		</form>
+	</ion-content>
+</ion-view>

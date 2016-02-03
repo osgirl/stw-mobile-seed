@@ -1,0 +1,73 @@
+<ion-view view-title="Intro"
+          ng-controller="WalkthroughController as vm">
+	<ion-nav-bar>
+		<ion-nav-buttons side="left">
+			<button class="button button-clear"
+			        ng-click="vm.start()"
+			        ng-if="!vm.slideIndex">
+				Skip Intro
+			</button>
+			<button class="button button-clear"
+			        ng-click="vm.previous()"
+			        ng-if="vm.slideIndex > 0">  
+				Previous Slide
+			</button>
+		</ion-nav-buttons>
+		
+		<ion-nav-buttons side="right">
+			<button class="button button-clear"
+			        ng-click="vm.next(index)"
+			        ng-if="vm.slideIndex !== 2">
+				Next
+			</button>
+			<button class="button button-clear"
+			        ng-click="vm.start()"
+			        ng-if="vm.slideIndex == 2">
+				STW Seed
+			</button>
+		</ion-nav-buttons>
+	</ion-nav-bar>
+	<ion-slide-box on-slide-changed="vm.slideChanged(index)"
+	               class="has-header intro-slides">
+		<ion-slide ng-class="{ active: !slideIndex}">
+			<div class="mdl-card">
+				<div class="mdl-card__title">
+					<h2 class="mdl-card__title-text">Text Goes Here</h2>
+				</div>
+				<div class="mdl-card__supporting-text">
+					Auckland Sky Tower, taken March 24th, 2014
+				</div>
+				<div class="mdl-card__supporting-text">
+					The Sky Tower is an observation and telecommunications tower located in Auckland,
+					New Zealand. It is 328 metres (1,076 ft) tall, making it the tallest man-made structure
+					in the Southern Hemisphere.
+				</div>
+				<div class="mdl-card__actions">
+					<!-- Colored FAB button with ripple -->
+					<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+						<i class="material-icons">add</i>
+					</button>
+				</div>
+			</div>
+		</ion-slide>
+		<ion-slide ng-class="{ active: slideIndex === 1}">
+			<h3>Using Awesome</h3>
+			
+			<div id="list">
+				<h5>Just three steps:</h5>
+				<ol>
+					<li>Be awesome</li>
+					<li>Stay awesome</li>
+					<li>There is no step 3</li>
+				</ol>
+			</div>
+		</ion-slide>
+		<ion-slide ng-class="{ active: slideIndex === 2}">
+			<h3>Any questions?</h3>
+			
+			<p>
+				Too bad!
+			</p>
+		</ion-slide>
+	</ion-slide-box>
+</ion-view>

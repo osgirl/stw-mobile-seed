@@ -1,0 +1,7 @@
+// Load AktivGrotesk font
+
+// Bold
+@include font-face("AktivGrotesk", "../fonts/aktiv_grotesk_hairline-webfont", 100, $file-formats: ttf woff woff2);
+@include font-face("AktivGrotesk", "../fonts/aktiv_grotesk_light-webfont", 300, $file-formats: ttf woff woff2);
+@include font-face("AktivGrotesk", "../fonts/aktiv_grotesk_medium-webfont", 500, $file-formats: ttf woff woff2);
+

@@ -1,0 +1,35 @@
+@mixin type-h1() {
+    font-size: 24px;
+    color: $yellow;
+
+    @include breakpoint($m) {
+        font-size: 30px;
+    }
+}
+
+@mixin type-h2() {
+    font-size: 18px;
+    color: $yellow;
+
+    @include breakpoint($m) {
+        font-size: 20px;
+    }
+}
+
+@mixin type-h3() {
+    font-size: 16px;
+    color: $colour-cool-grey;
+
+    @include breakpoint($m) {
+        font-size: 18px;
+    }
+}
+
+@mixin type-h4() {
+    font-size: 14px;
+    color: $color-cool-grey;
+
+    @include breakpoint($m) {
+        font-size: 14px;
+    }
+}

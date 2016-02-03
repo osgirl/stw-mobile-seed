@@ -1,0 +1,89 @@
+@import "colours";
+
+//Whitespace Keys
+$whitespace-keys: (
+        'p' : 'padding',
+        'm' : 'margin',
+        'a' : '',
+        'v' : ('-top', '-bottom'),
+        'h' : ('-left', '-right'),
+        't' : '-top',
+        'r' : '-right',
+        'b' : '-bottom',
+        'l' : '-left'
+);
+
+//Whitespace Sizes
+$whitespace-sizes: (
+        'n' : 0,
+        'xxs': 5px,
+        'xs': 10px,
+        's' : 15px,
+        'm' : 20px,
+        'l' : 25px,
+        'xl' : 30px,
+        'xxl' : 35px
+);
+
+$max-width: 1280px;
+
+$xs: max-width 320px;
+$s: 321px;
+$m: 691px;
+$l: 1024px;
+$xl: 1280px;
+
+$sidepadding: 3%;
+
+// Ionic icons
+$ionicons-font-path: "./fonts" !default;
+
+// Font Weight Variables
+$font-weight-hairline: 100;
+$font-weight-light: 300;
+$font-weight-medium: 500;
+
+// Font Size Variables
+//
+// could use (sp = px * ratio * scale)
+
+$font-mobile-size-small: 14px;
+$font-mobile-size-base: 16px;
+$font-mobile-size-middle: 20px;
+$font-mobile-size-mid-large: 28px;
+$font-mobile-size-large: 30px;
+$font-mobile-size-xlarge: 40px;
+
+$font-tablet-size-base: 18px;
+$font-tablet-size-large: 40px;
+$font-tablet-size-xlarge: 60px;
+
+// Font Line Height Variables
+
+$font-mobile-line-height-small: 17px;
+$font-mobile-line-height-base: 20px;
+$font-mobile-line-height-middle: 24px;
+$font-mobile-line-height-mid-large: 34px;
+$font-mobile-line-height-large: 36px;
+$font-mobile-line-height-xlarge: 48px;
+
+$font-tablet-line-height-base: 22px;
+$font-tablet-line-height-large: 48px;
+$font-tablet-line-height-xlarge: 72px;
+
+// Font Stacks
+$font-base-stack: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+$font-header-stack: $font-base-stack;
+
+// Z-Index
+$z-index-crust: -1;
+$z-index-ground: 10;
+$z-index-sky: 20;
+$z-index-space: 30;
+
+//corner-radius
+$button-border-radius: 5px;
+$panel-border-radius: 5px;
+$input-border-radius: 0px;
+
+$stw-menu-animation-time: 444ms;

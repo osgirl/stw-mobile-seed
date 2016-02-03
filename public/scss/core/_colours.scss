@@ -1,0 +1,115 @@
+// Base
+$white: white;
+$black: black;
+$transparent: transparent;
+
+// Transparent Blacks
+$black85: rgba(0, 0, 0, 0.85);
+$black75: rgba(0, 0, 0, 0.75);
+$black65: rgba(0, 0, 0, 0.65);
+$black50: rgba(0, 0, 0, 0.50);
+$black25: rgba(0, 0, 0, 0.25);
+
+// Transparent Whites
+$white85: rgba(255, 255, 255, 0.85);
+$white75: rgba(255, 255, 255, 0.75);
+$white50: rgba(255, 255, 255, 0.50);
+$white25: rgba(255, 255, 255, 0.25);
+
+// Primary (warm)
+$cool-grey: rgba(61, 63, 68, 1);
+$purple: rgba(135, 24, 154, 1);
+$magenta: rgba(230, 0, 126, 1);
+$mustard: rgba(255, 182, 20, 1);
+$yellow: rgba(255, 237, 20, 1);
+
+// Primary (cool)
+$white: rgba(255, 255, 255, 1);
+$cyan: rgba(0, 159, 227, 1);
+$warm-green: rgba(0, 173, 152, 1);
+$green: rgba(0, 149, 60, 1);
+$lime-green: rgba(205, 218, 0, 1);
+
+// Brand Colour set (logo)
+$logo-reflex-blue: rgba(0, 21, 135, 1);
+$-logo-green: $green;
+
+// Alerts
+$red: rgb(233, 0, 39);
+
+// Google Color Palette defined: http://www.google.com/design/spec/style/color.html
+// Primary Tints
+$color-cool-grey: (
+        "lighten-80": lighten($cool-grey, 80%),
+        "lighten-60": lighten($cool-grey, 60%),
+        "lighten-40": lighten($cool-grey, 40%),
+        "lighten-20": lighten($cool-grey, 20%),
+        "base": $cool-grey,
+        "darken": darken($cool-grey, 20%),
+);
+
+$color-purple: (
+        "lighten-80": lighten($purple, 80%),
+        "lighten-60": lighten($purple, 60%),
+        "lighten-40": lighten($purple, 40%),
+        "lighten-20": lighten($purple, 20%),
+        "base": $purple,
+        "darken": darken($purple, 20%),
+);
+
+$color-beta: (
+        "lighten-1": lighten(#F7DF71, 10%),
+        "base": #F7DF71,
+        "darken-1": darken(#F7DF71, 10%),
+);
+
+$color-delta: (
+        "lighten-1": lighten(#C0F074, 10%),
+        "base": #C0F074,
+        "darken-1": darken(#C0F074, 10%),
+);
+
+$color-gamma: (
+        "lighten-1": lighten(#76E8A9, 10%),
+        "base": #76E8A9,
+        "darken-1": darken(#76E8A9, 10%),
+);
+
+$color-epsilon: (
+        "lighten-1": lighten(#A4E1EB, 10%),
+        "base": #A4E1EB,
+        "darken-1": darken(#A4E1EB, 10%),
+);
+
+$grey: (
+        "lighten-5": #fafafa,
+        "lighten-4": #f5f5f5,
+        "lighten-3": #eeeeee,
+        "lighten-2": #e0e0e0,
+        "lighten-1": #bdbdbd,
+        "base": #9e9e9e,
+        "darken-1": #757575,
+        "darken-2": #616161,
+        "darken-3": #424242,
+        "darken-4": #212121
+);
+
+$shades: (
+        "black": #000000,
+        "dark": #5A6470,
+        "white" : #FFFFFF,
+        "transparent" : transparent
+);
+
+$colors: (
+        "grey": $grey,
+        "shades": $shades,
+        "default": $color-purple,
+        "alpha": $color-cool-grey,
+        "beta": $color-beta,
+        "delta": $color-delta,
+        "gamma": $color-gamma,
+        "epsilon": $color-epsilon
+);
+
+$theme-list: "default", "alpha", "beta", "delta", "gamma", "epsilon";

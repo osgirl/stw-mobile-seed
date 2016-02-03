@@ -1,0 +1,229 @@
+@import "../mixins/clearfix";
+
+/*
+ * Gridly v1.1.1-rc.2
+ */
+
+//==
+// Gridly SASS Switches
+//==
+$sass-silent-classes: false !default;
+// Set to 'true' to enable. Enabling SASS silent classes will require @extend to use.
+
+//==
+// Grid Variables
+//==
+
+//** Number of columns in the grid
+$grid-max-columns: 12 !default;
+
+//** Column padding & spacing
+$grid-page-gutter: 20px !default;
+// Left and right margins of page or container
+$grid-column-padding-right: 10px !default;
+$grid-column-padding-left: 10px !default;
+$grid-column-margin: 0 !default;
+
+//** Media queries breakpoints
+$grid-normal-column-name: "grid" !default;
+$grid-xsmall-column-size: 667px !default;
+$grid-xsmall-column-name: "grid-sm" !default;
+$grid-small-column-size: 668px !default;
+$grid-small-column-name: "grid-m" !default;
+$grid-medium-column-size: 1024px !default;
+$grid-medium-column-name: "grid-lg" !default;
+$grid-large-column-size: 1440px !default;
+$grid-large-column-name: "grid-xl" !default;
+
+
+//==
+// DO NOT EDIT BELOW THIS LINE
+//==
+$class-type: '';
+@if $sass-silent-classes == true {
+  $class-type: unquote("%");
+} @else if $sass-silent-classes == false {
+  $class-type: unquote(".");
+}
+
+// This makes the variables easier to call for coding while still maintaing easy readability for
+// human understanding.
+$silent: $sass-silent-classes;
+$columns: $grid-max-columns;
+$gutter: $grid-page-gutter;
+$col-pad-r: $grid-column-padding-right;
+$col-pad-l: $grid-column-padding-left;
+$col-mar: $grid-column-margin;
+// Note: depreciating use $col-nm
+$col: $grid-normal-column-name;
+$col-nm: $grid-normal-column-name;
+// Note: depreciating use $xs-sz
+$xs-size: $grid-xsmall-column-size;
+$xs-sz: $grid-xsmall-column-size;
+// Note: depreciating use $col-xs-nm
+$col-xs: $grid-xsmall-column-name;
+$col-xs-nm: $grid-xsmall-column-name;
+// Note: depreciating use $sm-sz
+$sm-size: $grid-small-column-size;
+$sm-sz: $grid-small-column-size;
+// Note: depreciating use $col-sm-nm
+$col-sm: $grid-small-column-name;
+$col-sm-nm: $grid-small-column-name;
+// Note: depreciating use $md-sz
+$md-size: $grid-medium-column-size;
+$md-sz: $grid-medium-column-size;
+// Note: depreciating use $col-md-nm
+$col-md: $grid-medium-column-name;
+$col-md-nm: $grid-medium-column-name;
+// Note: depreciating use $lg-sz
+$lg-size: $grid-large-column-size;
+$lg-sz: $grid-large-column-size;
+// Note: depreciating use $col-lg-nm
+$col-lg: $grid-large-column-name;
+$col-lg-nm: $grid-large-column-name;
+
+
+//==
+// Grid Mixins
+//==
+
+// Determine column size.
+@function one-col($foo) {
+  @if $col-mar != 0 {
+    @return ((100% - ($col-mar * ($col-mar - 1))) / $columns);
+  } @else {
+    @return 100% / $columns;
+  }
+}
+
+@function col-size($num) {
+  @return ((one-col(0) * $num) + ($col-mar * ($num - 1)));
+}
+
+// Create the row.
+@mixin make-row {
+  #{$class-type}row {
+    @if $gutter != 0 {
+      margin: 0 (-$gutter/2);
+    } @else {
+      margin: 0;
+    }
+    *zoom: 1;
+    &:before, &:after {
+      display: table;
+      content: " ";
+    }
+    &:after {
+      clear: both;
+    }
+  }
+}
+
+// Column styles
+@mixin col-styles {
+  position: relative;
+  @if $col-mar != 0 {
+    margin-left: $col-mar;
+  } @else {
+    margin: 0;
+  }
+  padding-left: ($col-pad-l);
+  padding-right: ($col-pad-r);
+}
+
+// Create the columns
+@mixin apply-col-styles {
+  $i: 1;
+  $list: "#{$class-type}#{$col}-#{$i}, #{$class-type}#{$col-xs}-#{$i}, #{$class-type}#{$col-sm}-#{$i}, #{$class-type}#{$col-md}-#{$i}, #{$class-type}#{$col-lg}-#{$i}";
+  @for $i from 2 through $columns {
+    $list: "#{$list}, #{$class-type}#{$col}-#{$i}, #{$class-type}#{$col-xs}-#{$i}, #{$class-type}#{$col-sm}-#{$i}, #{$class-type}#{$col-md}-#{$i}, #{$class-type}#{$col-lg}-#{$i}";
+  }
+  #{$list} {
+    @include col-styles;
+  }
+}
+
+@mixin make-col($name, $min-width: 0, $max-width: 0) {
+  $i: 1;
+  $list: "#{$class-type}#{$name}-#{$i}";
+  @for $i from 2 through $columns {
+    $list: "#{$list}, #{$class-type}#{$name}-#{$i}";
+  }
+  #{$list} {
+    float: left;
+  }
+  @for $i from 1 through ($columns - 1) {
+    #{$class-type}#{$name}-#{$i} {
+      width: col-size($i);
+    }
+  }
+  #{$class-type}#{$name}-#{$columns} {
+    width: 100%;
+  }
+}
+
+@mixin make-breakpoints($name, $min: 0, $max: 0) {
+  @if $min != 0 and $max != 0 {
+    @media screen and (min-width: $min) and (max-width: $max) {
+      @include make-col($name)
+    }
+  } @else if $min != 0 {
+    @media screen and (min-width: $min) {
+      @include make-col($name)
+    }
+  } @else if $max != 0 {
+    @media screen and (max-width: $max) {
+      @include make-col($name)
+    }
+  }
+}
+
+@mixin make-grid {
+  @include apply-col-styles;
+  @include make-col($col);
+  @include make-breakpoints($col-xs, 0, $xs-size);
+  @include make-breakpoints($col-sm, ($sm-size), 0);
+  @include make-breakpoints($col-md, ($md-size), 0);
+  @include make-breakpoints($col-lg, ($lg-size), 0);
+}
+
+%clearfix {
+  @include clearfix;
+}
+
+%columns {
+  @include col-styles;
+}
+
+// Not including in sass-silent-styles because this reset is temporary
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  &:before, &:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+}
+
+div {
+  display: block;
+}
+
+$var: '';
+// clean var for later use.
+
+#{$class-type}container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: $gutter;
+  margin-left: $gutter;
+  @extend %clearfix;
+}
+
+// Grid
+@include make-row;
+@include make-grid;

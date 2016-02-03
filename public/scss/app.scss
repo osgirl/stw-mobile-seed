@@ -1,0 +1,190 @@
+// Core
+@import "imports",
+"core/reset",
+"core/variables",
+"core/breakpoint",
+"core/grid",
+"mixins/color",
+"mixins/clearfix",
+"mixins/spacing",
+"mixins/theme",
+"core/colours",
+"core/z-index",
+"core/typography",
+"core/lock_content";
+
+// Components
+html {
+  font-size: 1em; /* Assuming 16px... */
+  height: 100%;
+  -webkit-text-size-adjust: none
+}
+
+body {
+  background: $white;
+  font-family: $font-base-stack;
+  font-weight: $font-weight-light;
+  padding: 0;
+  color: #59636d;
+  font-size: $font-mobile-size-base;
+  line-height: $font-mobile-line-height-base;
+  height: 100%;
+  overflow:hidden;
+  overflow-y: scroll;
+  @include breakpoint($m) {
+    font-size: $font-tablet-size-base;
+    line-height: $font-tablet-line-height-base;
+  }
+}
+
+/* Common margin-bottom for vertical rhythm. */
+h1, h2, h3, h4, h5, h6,
+ul, ol, dl,
+fieldset,
+p,
+table,
+pre,
+hr {
+  margin-bottom: 24px;
+  margin-bottom: 1rem;
+}
+
+hr.panel-section__heading__underline {
+  border: 0;
+  border-bottom: 1px solid $cool-grey;
+  height: 0 !important;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.hide-visually {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px
+}
+
+.content {
+  display: block;
+}
+
+.content-width {
+  max-width: $max-width;
+  padding: 0 $sidepadding;
+  margin: 0 auto;
+}
+
+.panel-content {
+  height: 100%;
+
+  .default & {
+    height: auto;
+  }
+}
+
+.float-left {
+  float: left;
+}
+
+.float-right {
+  float: right;
+}
+
+.position-relative {
+  position: relative;
+}
+
+.positive-text {
+  color: $green !important;
+}
+
+.negative-text {
+  color: $red !important;
+}
+
+.overdrive {
+  transform: translate3d(0,0,0);
+}
+
+.app_section {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.app_header,
+.app_footer {
+  display: block;
+
+  flex: none; /* 2 */
+}
+
+.app_footer {
+  background: transparent;
+}
+
+.app_content {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  padding: 0 0 50px;
+  width: 100%;
+  display: block;
+  .background_solid & {
+    background: white;
+  }
+  &:after {
+    content: '\00a0'; /* &nbsp; */
+    display: block;
+    height: 0px;
+    visibility: hidden;
+  }
+}
+
+.app_loading {
+  .app_view {
+    display: none;
+  }
+  .app_loader {
+    display: block;
+  }
+}
+
+.app_loader {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  display: none;
+
+  .loader {
+    display: block;
+    height: 30px;
+    width: 30px;
+    color: black;
+    opacity: 0.8;
+    svg {
+      height: 100%;
+      width: 100%;
+      fill: #59636d;
+      animation: spin 1s linear infinite;
+    }
+  }
+}
+
+.app_view {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+$ionicons-font-path: "../bower_components/ionic/fonts" !default;
+
+// Import Ionic css framework
+@import "../bower_components/ionic/css/ionic.css";

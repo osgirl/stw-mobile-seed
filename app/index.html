@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport"
+	      content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+	<title>{%= o.htmlWebpackPlugin.options.title || o.htmlWebpackPlugin.options.pkg.name || "Severn Trent Mobile Seed Project" %}</title>
+
+	<!-- auto generated css file (see webpack config for further reading ) -->
+	{% for (var css in o.htmlWebpackPlugin.files.css) { %}
+	<link href="{%=o.htmlWebpackPlugin.files.css[css] %}" rel="stylesheet">
+	{% } %}
+
+	<!-- This will always 404 as cordova injects file on build, pulled in via cordova build/cordova run [platform] -->
+	<script src="cordova.js"></script>
+
+</head>
+
+<body>
+
+	<!-- this is the main view, every view will be routed through here -->
+	<ion-nav-view></ion-nav-view>
+
+	<!-- auto generated js files one for your own es5/es6/angular and a separate containing any vendor dependencies
+		(see webpack config for further reading )
+		-->
+	{% { %}
+		<script src="{%=o.htmlWebpackPlugin.files.chunks['vendor'].entry %}"></script>
+		<script src = "{%=o.htmlWebpackPlugin.files.chunks['app'].entry %}" ></script>
+	{% } %}
+
+</body>
+</html>
