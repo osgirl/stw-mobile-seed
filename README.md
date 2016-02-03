@@ -8,7 +8,7 @@
 https://nodejs.org/en/download/
 ```
 
-#### Install Bower via npm (this is a part of Node)
+#### Install Bower via npm (this is a part of Node, npm = node package manager)
 
 ```bash
 $ npm install bower
