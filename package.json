@@ -3,6 +3,13 @@
   "version": "1.1.1",
   "description": "severn trent mobile seed, it has it's own walkthrough slides before main app module",
   "main": "app.module.js",
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/matthill82/stw-seed.git"
+  },
+  "license" : {
+    "type" : "MIT"
+  },
   "scripts": {
 
     "start": "env UV_THREADPOOL_SIZE=100 webpack --progress --colors --watch",
