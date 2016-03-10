@@ -80,25 +80,25 @@ gulp.task( 'ng-docs', [], function () {
 		.pipe( gulp.dest( './docs/ngdocs' ) );
 } );
 
-//gulp.task( 'styleguide:generate', function () {
-//	return gulp.src( './app/*.scss' )
-//		.pipe( styleguide.generate( {
-//			title       : 'My Styleguide',
-//			server      : true,
-//			rootPath    : outputPath,
-//			overviewPath: 'README.md'
-//		} ) )
-//		.pipe( gulp.dest( outputPath ) );
-//} );
-//
-//gulp.task( 'styleguide:applystyles', function () {
-//	return gulp.src( './app/app.scss' )
-//		.pipe( sass( {
-//			errLogToConsole: true
-//		} ) )
-//		.pipe( styleguide.applyStyles() )
-//		.pipe( gulp.dest( outputPath ) );
-//} );
+gulp.task( 'styleguide:generate', function () {
+	return gulp.src( './app/*.scss' )
+		.pipe( styleguide.generate( {
+			title       : 'My Styleguide',
+			server      : true,
+			rootPath    : outputPath,
+			overviewPath: 'README.md'
+		} ) )
+		.pipe( gulp.dest( outputPath ) );
+} );
+
+gulp.task( 'styleguide:applystyles', function () {
+	return gulp.src( './app/app.scss' )
+		.pipe( sass( {
+			errLogToConsole: true
+		} ) )
+		.pipe( styleguide.applyStyles() )
+		.pipe( gulp.dest( outputPath ) );
+} );
 
 gulp.task( 'install', ['webpack'] );
 gulp.task( 'watch', ['webpack-dev-server']);

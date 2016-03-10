@@ -60,8 +60,7 @@ module.exports = {
 	cache        : true,
 	entry        : {
 		vendor: [
-			PATHS.bower + 'ionic/js/ionic.bundle',
-//			PATHS.bower + 'material-design-lite/material.min',
+			PATHS.bower + 'ionic/js/ionic',
 			PATHS.bower + 'angular-animate/angular-animate'
 		],
 		app   : ['./app/bootstrap.js']
